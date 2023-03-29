@@ -1,0 +1,8 @@
+mixin dashboard(data)
+  #dash
+    h1= data.dummyData
+  if data.length > 0
+  each owner in data
+    .card
+      .card-body
+        h5.card-title= owner.name

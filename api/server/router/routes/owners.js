@@ -25,8 +25,6 @@ module.exports = (app, db) => {
         const name = req.body.name
         const role = req.body.role
 
-        console.log(req)
-
         db.owners
             .create({
                 name: name,

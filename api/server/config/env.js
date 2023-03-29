@@ -1,7 +1,7 @@
 'use strict'
 
 const env = {
-    PORT: process.env.PORT || 3000,
+    PORT: process.env.PORT || 5000,
     DATABASE_URL: process.env.DATABASE_URL || 'Mysql@localhost:3306',
     DATABASE_NAME: process.env.DATABASE_NAME || 'pets_and_owners',
     DATABASE_HOST: process.env.DATABASE_HOST || 'localhost',
