@@ -1,0 +1,31 @@
+{
+    "name": "pets-and-owners",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/julianmedwards/pets-and-owners.git"
+    },
+    "author": "Julian Edwards",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/julianmedwards/pets-and-owners/issues"
+    },
+    "homepage": "https://github.com/julianmedwards/pets-and-owners#readme",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "express": "^4.18.2",
+        "morgan": "^1.10.0",
+        "mysql2": "^3.2.0",
+        "sequelize": "^6.30.0",
+        "sequelize-cli": "^6.6.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    }
+}
