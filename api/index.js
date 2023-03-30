@@ -23,58 +23,27 @@ app.use((req, res, next) => {
 
 router(app, db)
 
-const defaultData = [
-    {
-        name: 'Julian Edwards',
-        role: 'admin',
-        pets: [
-            {name: 'Tigerlily', type: 'cat'},
-            {name: 'Ginger', type: 'cat'},
-        ],
-    },
-    {
-        name: 'Frank Zappa',
-        role: 'admin',
-        pets: [{name: 'Fido', type: 'dog'}],
-    },
-    {
-        name: 'Erik de Jong',
-        role: 'user',
-        pets: [{name: 'Picasso', type: 'cat'}],
-    },
-    {
-        name: 'Sarah Smith',
-        role: 'user',
-        pets: [
-            {name: 'Polly', type: 'Parrot'},
-            {name: 'Bluestar', type: 'cat'},
-        ],
-    },
-    {
-        name: 'Monica Dames',
-        role: 'user',
-        pets: [
-            {name: 'Wobke', type: 'dog'},
-            {name: 'Mona', type: 'cat'},
-            {name: 'Dodger', type: 'cat'},
-        ],
-    },
-    {
-        name: 'Peter Kunst',
-        role: 'user',
-        pets: [{name: 'Rex', type: 'dog'}],
-    },
-    {
-        name: 'Leo Lemniscaat',
-        role: 'user',
-        pets: [{name: 'Bernard', type: 'dog'}],
-    },
-]
+const {vaccineData, petOwnerData} = require('./server/config/defaultData')
 
 //drop and resync with { force: true }
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync().then(() => {
+    // insertDefaultData(vaccineData, petOwnerData)
+
+    app.listen(PORT, () => {
+        console.log('Express API listening on port:', PORT)
+    })
+})
+
+function insertDefaultData(vaccineData, petOwnerData) {
     // Generate default data.
-    defaultData.forEach((owner) => {
+    vaccineData.forEach((vaccine) => {
+        db.vaccines.create({
+            name: vaccine.name,
+            base_price: vaccine.base_price,
+        })
+    })
+
+    petOwnerData.forEach((owner) => {
         db.owners
             .create({
                 name: owner.name,
@@ -82,16 +51,36 @@ db.sequelize.sync({force: true}).then(() => {
             })
             .then((ownerInst) => {
                 owner.pets.forEach((pet) => {
-                    db.pets.create({
-                        name: pet.name,
-                        owner_id: ownerInst.id,
-                        type: pet.type,
-                    })
+                    db.pets
+                        .create({
+                            name: pet.name,
+                            owner_id: ownerInst.id,
+                            type: pet.type,
+                        })
+                        .then((petInst) => {
+                            insertVaccine(pet, petInst)
+                        })
                 })
             })
     })
+}
 
-    app.listen(PORT, () => {
-        console.log('Express API listening on port:', PORT)
-    })
-})
+function insertVaccine(pet, petInst) {
+    if (pet.vaccinations) {
+        pet.vaccinations.forEach((vaccination) => {
+            db.vaccines
+                .findOne({
+                    where: {name: vaccination.vaccine},
+                })
+                .then((vaccine) => {
+                    petInst.addVaccine(vaccine, {
+                        through: {
+                            administration_date:
+                                vaccination.administration_date,
+                            end_price: vaccination.end_price,
+                        },
+                    })
+                })
+        })
+    }
+}

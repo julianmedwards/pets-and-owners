@@ -1,6 +1,10 @@
 'use strict'
 
-const routes = [require('./routes/owners'), require('./routes/pets')]
+const routes = [
+    require('./routes/owners'),
+    require('./routes/pets'),
+    require('./routes/vaccines'),
+]
 
 // Add access to the app and db objects to each route
 module.exports = function router(app, db) {
