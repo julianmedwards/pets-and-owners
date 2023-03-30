@@ -12,8 +12,9 @@ module.exports = (app, db) => {
     app.get('/owners/:id', (req, res) => {
         const id = req.params.id
         db.owners
-            .find({
+            .findAll({
                 where: {id: id},
+                include: db.pets,
             })
             .then((owner) => {
                 res.json(owner)
@@ -40,7 +41,7 @@ module.exports = (app, db) => {
         const id = req.params.id
         const updates = req.body.updates
         db.owners
-            .find({
+            .findAll({
                 where: {id: id},
             })
             .then((owner) => {
