@@ -3,7 +3,7 @@
 module.exports = (app, db) => {
     // GET all owners
     app.get('/owners', (req, res) => {
-        db.owners.findAll().then((owners) => {
+        db.owners.findAll({order: [['name', 'ASC']]}).then((owners) => {
             res.json(owners)
         })
     })
