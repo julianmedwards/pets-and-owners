@@ -25,9 +25,10 @@ router(app, db)
 
 const {vaccineData, petOwnerData} = require('./server/config/defaultData')
 
-//drop and resync with { force: true }
-db.sequelize.sync().then(() => {
-    // insertDefaultData(vaccineData, petOwnerData)
+// drop and resync with { force: true },
+// comment/delete insertDefaultData() to not duplicate data if removing.
+db.sequelize.sync({force: true}).then(() => {
+    insertDefaultData(vaccineData, petOwnerData)
 
     app.listen(PORT, () => {
         console.log('Express API listening on port:', PORT)
