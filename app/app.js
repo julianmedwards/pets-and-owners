@@ -64,5 +64,5 @@ app.listen(PORT, () => {
 
 function parseMySQLDateTime(MySQLDate) {
     let date = new Date(MySQLDate)
-    return date.toDateString()
+    return date.toLocaleDateString()
 }
