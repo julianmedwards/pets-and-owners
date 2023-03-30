@@ -22,8 +22,20 @@ app.get('/', async (req, res) => {
     })
 
     const data = await ownersReq.json()
-    res.header('Content-Type', 'text/html')
     res.render('index', {data})
+})
+
+app.get('/owners/:id', async (req, res) => {
+    const ownerReq = await fetch(
+        `http://localhost:5000/owners/${req.params.id}`,
+        {
+            method: 'GET',
+        }
+    )
+
+    const data = await ownerReq.json()
+    console.log(data)
+    res.render('owner', {data: data[0]})
 })
 
 app.use(express.static('public'))

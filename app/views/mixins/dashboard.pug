@@ -1,8 +1,9 @@
 mixin dashboard(data)
-  #dash
-    h1= data.dummyData
-  if data.length > 0
-  each owner in data
-    .card
-      .card-body
-        h5.card-title= owner.name
+  #dash.row.row-cols-3.g-3.text-center
+    if data.length > 0
+    each owner in data
+      .col
+        .card
+          .card-body
+            a(href=`/owners/${owner.id}`)
+              h5.card-title= owner.name

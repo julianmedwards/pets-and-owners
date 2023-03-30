@@ -25,5 +25,11 @@ html(lang='en')
     header
       h1.text-center= 'Pet Dashboard'
     main.container
-      include mixins/dashboard
-      +dashboard(data)
+      .card.text-center
+        .card-body
+          h3.card-text= data.name
+          if data.Pets
+            .card-columns
+              each pet of data.Pets
+                .card
+                  h5.card-text= pet.name
