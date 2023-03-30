@@ -38,6 +38,17 @@ app.get('/owners/:id', async (req, res) => {
     res.render('owner', {data: data[0]})
 })
 
+app.get('/pets/:id', async (req, res) => {
+    const petReq = await fetch(`http://localhost:5000/pets/${req.params.id}`, {
+        method: 'GET',
+    })
+
+    const data = await petReq.json()
+    console.log(data)
+    console.log(data[0].vaccines)
+    res.render('pet', {data: data[0]})
+})
+
 app.use(express.static('public'))
 
 app.listen(PORT, () => {

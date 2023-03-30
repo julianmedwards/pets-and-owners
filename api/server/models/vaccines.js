@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Vaccine = sequelize.define(
-        'Vaccine',
+        'vaccine',
         {
             id: {
                 type: DataTypes.UUID,
@@ -13,15 +13,15 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 required: true,
             },
-            base_price: {
+            basePrice: {
                 type: DataTypes.INTEGER,
                 required: true,
             },
-            created_at: {
-                type: DataTypes.DATE,
-            },
-            updated_at: DataTypes.DATE,
-            deleted_at: DataTypes.DATE,
+            // created_at: {
+            //     type: DataTypes.DATE,
+            // },
+            // updated_at: DataTypes.DATE,
+            // deleted_at: DataTypes.DATE,
         },
         {
             paranoid: true,

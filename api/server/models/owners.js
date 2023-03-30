@@ -17,11 +17,6 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.ENUM,
                 values: ['user', 'admin', 'disabled'],
             },
-            created_at: {
-                type: DataTypes.DATE,
-            },
-            updated_at: DataTypes.DATE,
-            deleted_at: DataTypes.DATE,
         },
         {
             paranoid: true,

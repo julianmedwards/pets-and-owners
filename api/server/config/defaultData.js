@@ -2,15 +2,15 @@ module.exports = {
     vaccineData: [
         {
             name: 'Vaccine#123a',
-            base_price: 37,
+            basePrice: 37,
         },
         {
             name: 'Vaccine#456b',
-            base_price: 92,
+            basePrice: 92,
         },
         {
             name: 'Vaccine#789c',
-            base_price: 180,
+            basePrice: 180,
         },
     ],
     petOwnerData: [
@@ -24,13 +24,13 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2013, 2, 14),
-                            end_price: 20,
+                            administrationDate: new Date(2013, 2, 14),
+                            endPrice: 20,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2024, 0, 5),
-                            end_price: 42,
+                            administrationDate: new Date(2024, 0, 5),
+                            endPrice: 42,
                         },
                     ],
                 },
@@ -55,18 +55,18 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2009, 5, 19),
-                            end_price: 10,
+                            administrationDate: new Date(2009, 5, 19),
+                            endPrice: 10,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2009, 7, 20),
-                            end_price: 33,
+                            administrationDate: new Date(2009, 7, 20),
+                            endPrice: 33,
                         },
                         {
                             vaccine: 'Vaccine#789c',
-                            administration_date: new Date(2024, 8, 3),
-                            end_price: 110,
+                            administrationDate: new Date(2024, 8, 3),
+                            endPrice: 110,
                         },
                     ],
                 },
@@ -82,18 +82,18 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2015, 1, 5),
-                            end_price: 37,
+                            administrationDate: new Date(2015, 1, 5),
+                            endPrice: 37,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2014, 11, 7),
-                            end_price: 92,
+                            administrationDate: new Date(2014, 11, 7),
+                            endPrice: 92,
                         },
                         {
                             vaccine: 'Vaccine#789c',
-                            administration_date: new Date(2024, 3, 25),
-                            end_price: 180,
+                            administrationDate: new Date(2024, 3, 25),
+                            endPrice: 180,
                         },
                     ],
                 },
@@ -103,13 +103,13 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2010, 2, 2),
-                            end_price: 25,
+                            administrationDate: new Date(2010, 2, 2),
+                            endPrice: 25,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2010, 3, 3),
-                            end_price: 60,
+                            administrationDate: new Date(2010, 3, 3),
+                            endPrice: 60,
                         },
                     ],
                 },
@@ -125,18 +125,18 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2016, 6, 29),
-                            end_price: 12,
+                            administrationDate: new Date(2016, 6, 29),
+                            endPrice: 12,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2016, 7, 5),
-                            end_price: 40,
+                            administrationDate: new Date(2016, 7, 5),
+                            endPrice: 40,
                         },
                         {
                             vaccine: 'Vaccine#789c',
-                            administration_date: new Date(2024, 6, 5),
-                            end_price: 100,
+                            administrationDate: new Date(2024, 6, 5),
+                            endPrice: 100,
                         },
                     ],
                 },
@@ -146,8 +146,8 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#789c',
-                            administration_date: new Date(2024, 6, 5),
-                            end_price: 100,
+                            administrationDate: new Date(2024, 6, 5),
+                            endPrice: 100,
                         },
                     ],
                 },
@@ -157,8 +157,8 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#789c',
-                            administration_date: new Date(2024, 6, 5),
-                            end_price: 100,
+                            administrationDate: new Date(2024, 6, 5),
+                            endPrice: 100,
                         },
                     ],
                 },
@@ -174,13 +174,13 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2011, 10, 11),
-                            end_price: 0,
+                            administrationDate: new Date(2011, 10, 11),
+                            endPrice: 0,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2011, 11, 15),
-                            end_price: 5,
+                            administrationDate: new Date(2011, 11, 15),
+                            endPrice: 5,
                         },
                     ],
                 },
@@ -196,18 +196,18 @@ module.exports = {
                     vaccinations: [
                         {
                             vaccine: 'Vaccine#123a',
-                            administration_date: new Date(2023, 9, 1),
-                            end_price: 20,
+                            administrationDate: new Date(2023, 9, 1),
+                            endPrice: 20,
                         },
                         {
                             vaccine: 'Vaccine#456b',
-                            administration_date: new Date(2023, 9, 1),
-                            end_price: 40,
+                            administrationDate: new Date(2023, 9, 1),
+                            endPrice: 40,
                         },
                         {
                             vaccine: 'Vaccine#789c',
-                            administration_date: new Date(2023, 9, 27),
-                            end_price: 90,
+                            administrationDate: new Date(2023, 9, 27),
+                            endPrice: 90,
                         },
                     ],
                 },

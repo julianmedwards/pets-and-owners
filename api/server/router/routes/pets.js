@@ -14,6 +14,7 @@ module.exports = (app, db) => {
         db.pets
             .findAll({
                 where: {id: id},
+                include: db.vaccines,
             })
             .then((pet) => {
                 res.json(pet)

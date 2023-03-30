@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Pet = sequelize.define(
-        'Pet',
+        'pet',
         {
             id: {
                 type: DataTypes.UUID,
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 required: true,
             },
-            owner_id: {
+            ownerId: {
                 type: DataTypes.UUID,
                 allowNull: false,
             },
@@ -21,11 +21,6 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.ENUM,
                 values: ['dog', 'cat', 'parrot'],
             },
-            created_at: {
-                type: DataTypes.DATE,
-            },
-            updated_at: DataTypes.DATE,
-            deleted_at: DataTypes.DATE,
         },
         {
             paranoid: true,

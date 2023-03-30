@@ -20,7 +20,7 @@ html(lang='en')
       src='https://kit.fontawesome.com/a34e179989.js',
       crossorigin='anonymous'
     )
-    title Pet Dashboard
+    title Pet Dashboard - #{data.name}
   body
     header
       h1.text-center= 'Pet Dashboard'
@@ -28,8 +28,8 @@ html(lang='en')
       .card.text-center
         .card-body
           h3.card-text= data.name
-          if data.Pets
-            .card-columns
-              each pet of data.Pets
-                .card
-                  h5.card-text= pet.name
+          if data.pets
+            .list-group
+              each pet of data.pets
+                li.list-group-item
+                  a(href=`/pets/${pet.id}`)= pet.name

@@ -27,13 +27,16 @@ db.sequelize = sequelize
 db.owners = require('../models/owners.js')(sequelize, Sequelize)
 db.pets = require('../models/pets.js')(sequelize, Sequelize)
 db.vaccines = require('../models/vaccines.js')(sequelize, Sequelize)
-db.vaccination = require('../models/vaccinations.js')(sequelize, Sequelize)
+db.vaccinationRecords = require('../models/vaccination-records.js')(
+    sequelize,
+    Sequelize
+)
 
 // Relations
 db.pets.belongsTo(db.owners)
 db.owners.hasMany(db.pets)
 
-db.pets.belongsToMany(db.vaccines, {through: db.vaccination})
-db.vaccines.belongsToMany(db.pets, {through: db.vaccination})
+db.vaccines.belongsToMany(db.pets, {through: db.vaccinationRecords})
+db.pets.belongsToMany(db.vaccines, {through: db.vaccinationRecords})
 
 module.exports = db

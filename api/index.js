@@ -39,7 +39,7 @@ function insertDefaultData(vaccineData, petOwnerData) {
     vaccineData.forEach((vaccine) => {
         db.vaccines.create({
             name: vaccine.name,
-            base_price: vaccine.base_price,
+            basePrice: vaccine.basePrice,
         })
     })
 
@@ -54,7 +54,7 @@ function insertDefaultData(vaccineData, petOwnerData) {
                     db.pets
                         .create({
                             name: pet.name,
-                            owner_id: ownerInst.id,
+                            ownerId: ownerInst.id,
                             type: pet.type,
                         })
                         .then((petInst) => {
@@ -65,9 +65,9 @@ function insertDefaultData(vaccineData, petOwnerData) {
     })
 }
 
-function insertVaccine(pet, petInst) {
-    if (pet.vaccinations) {
-        pet.vaccinations.forEach((vaccination) => {
+function insertVaccine(petData, petInst) {
+    if (petData.vaccinations) {
+        petData.vaccinations.forEach((vaccination) => {
             db.vaccines
                 .findOne({
                     where: {name: vaccination.vaccine},
@@ -75,9 +75,8 @@ function insertVaccine(pet, petInst) {
                 .then((vaccine) => {
                     petInst.addVaccine(vaccine, {
                         through: {
-                            administration_date:
-                                vaccination.administration_date,
-                            end_price: vaccination.end_price,
+                            administrationDate: vaccination.administrationDate,
+                            endPrice: vaccination.endPrice,
                         },
                     })
                 })
