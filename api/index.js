@@ -23,45 +23,73 @@ app.use((req, res, next) => {
 
 router(app, db)
 
+const defaultData = [
+    {
+        name: 'Julian Edwards',
+        role: 'admin',
+        pets: [
+            {name: 'Tigerlily', type: 'cat'},
+            {name: 'Ginger', type: 'cat'},
+        ],
+    },
+    {
+        name: 'Frank Zappa',
+        role: 'admin',
+        pets: [{name: 'Fido', type: 'dog'}],
+    },
+    {
+        name: 'Erik de Jong',
+        role: 'user',
+        pets: [{name: 'Picasso', type: 'cat'}],
+    },
+    {
+        name: 'Sarah Smith',
+        role: 'user',
+        pets: [
+            {name: 'Polly', type: 'Parrot'},
+            {name: 'Bluestar', type: 'cat'},
+        ],
+    },
+    {
+        name: 'Monica Dames',
+        role: 'user',
+        pets: [
+            {name: 'Wobke', type: 'dog'},
+            {name: 'Mona', type: 'cat'},
+            {name: 'Dodger', type: 'cat'},
+        ],
+    },
+    {
+        name: 'Peter Kunst',
+        role: 'user',
+        pets: [{name: 'Rex', type: 'dog'}],
+    },
+    {
+        name: 'Leo Lemniscaat',
+        role: 'user',
+        pets: [{name: 'Bernard', type: 'dog'}],
+    },
+]
+
 //drop and resync with { force: true }
 db.sequelize.sync({force: true}).then(() => {
     // Generate default data.
-    db.owners
-        .create({
-            name: 'Julian Edwards',
-            role: 'admin',
-        })
-        .then((owner) => {
-            db.pets.create({
-                name: 'Tigerlily',
-                owner_id: owner.id,
-                type: 'cat',
+    defaultData.forEach((owner) => {
+        db.owners
+            .create({
+                name: owner.name,
+                role: owner.role,
             })
-        })
-    db.owners
-        .create({
-            name: 'Andrew Siemer',
-            role: 'admin',
-        })
-        .then((owner) => {
-            db.pets.create({
-                name: 'Fido',
-                owner_id: owner.id,
-                type: 'dog',
+            .then((ownerInst) => {
+                owner.pets.forEach((pet) => {
+                    db.pets.create({
+                        name: pet.name,
+                        owner_id: ownerInst.id,
+                        type: pet.type,
+                    })
+                })
             })
-        })
-    db.owners
-        .create({
-            name: 'Sarah Smith',
-            role: 'user',
-        })
-        .then((owner) => {
-            db.pets.create({
-                name: 'Polly',
-                owner_id: owner.id,
-                type: 'parrot',
-            })
-        })
+    })
 
     app.listen(PORT, () => {
         console.log('Express API listening on port:', PORT)
