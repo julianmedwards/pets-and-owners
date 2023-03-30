@@ -1,65 +1,63 @@
 'use strict'
 
 module.exports = (app, db) => {
-    // GET all pets
-    app.get('/pets', (req, res) => {
-        db.pets.findAll().then((pets) => {
-            res.json(pets)
+    // GET all vaccines
+    app.get('/vaccines', (req, res) => {
+        db.vaccines.findAll().then((vaccines) => {
+            res.json(vaccines)
         })
     })
 
-    // GET one pet by id
-    app.get('/pets/:id', (req, res) => {
+    // GET one vaccine by id
+    app.get('/vaccine/:id', (req, res) => {
         const id = req.params.id
-        db.pets
+        db.vaccines
             .findAll({
                 where: {id: id},
             })
-            .then((pet) => {
-                res.json(pet)
+            .then((vaccines) => {
+                res.json(vaccines)
             })
     })
 
-    // POST single pet
-    app.post('/pets', (req, res) => {
+    // POST single vaccine
+    app.post('/vaccines', (req, res) => {
         const name = req.body.name
-        const owner_id = req.body.owner_id
-        const type = req.body.type
-        db.pets
+        const base_price = req.body.base_price
+        db.vaccines
             .create({
                 name: name,
-                owner_id: owner_id,
-                type: type,
+                base_price: base_price,
             })
-            .then((newPet) => {
-                res.json(newPet)
+            .then((newVaccine) => {
+                res.json(newVaccine)
             })
     })
 
-    // PATCH single pet
-    app.patch('/pets/:id', (req, res) => {
+    // PATCH single vaccine
+    app.patch('/vaccines/:id', (req, res) => {
         const id = req.params.id
         const updates = req.body.updates
-        db.pets
+        db.vaccines
             .findAll({
                 where: {id: id},
             })
-            .then((pet) => {
-                return pet.updateAttributes(updates)
+            .then((vaccine) => {
+                return vaccine.updateAttributes(updates)
             })
-            .then((updatedPet) => {
-                res.json(updatedPet)
+            .then((updatedVaccine) => {
+                res.json(updatedVaccine)
             })
     })
 
-    app.delete('/pets/:id', (req, res) => {
+    app.delete('/vaccines/:id', (req, res) => {
         const id = req.params.id
-        db.pets
+        db.vaccines
             .destroy({
                 where: {id: id},
             })
-            .then((deletedPet) => {
-                res.json(deletedPet)
+            .then((deletedVaccine) => {
+                res.json(deletedVaccine)
             })
     })
 }
