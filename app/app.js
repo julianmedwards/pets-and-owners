@@ -46,6 +46,13 @@ app.get('/pets/:id', async (req, res) => {
     const data = await petReq.json()
     console.log(data)
     console.log(data[0].vaccines)
+
+    data[0].vaccines.forEach((vaccine) => {
+        vaccine.vaccinationRecord.administrationDate = parseMySQLDateTime(
+            vaccine.vaccinationRecord.administrationDate
+        )
+    })
+
     res.render('pet', {data: data[0]})
 })
 
@@ -54,3 +61,8 @@ app.use(express.static('public'))
 app.listen(PORT, () => {
     console.log('Express APP listening on port:', PORT)
 })
+
+function parseMySQLDateTime(MySQLDate) {
+    let date = new Date(MySQLDate)
+    return date.toDateString()
+}
